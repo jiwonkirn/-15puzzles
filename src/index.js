@@ -88,6 +88,7 @@ board.querySelectorAll('.row').forEach((rowEl, rowIndex) => {
 function viewTimer() {
   let sec = 0, min = 0, hour = 0
   const timeArea = document.querySelector('.timer')
+  // 1000밀리초마다 timer함수를 실행하는 timeUp 함수를 설정
   const timeUp = setInterval(timer, 1000)
 
   function timer() {

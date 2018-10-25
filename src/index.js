@@ -79,7 +79,7 @@ restart.addEventListener('click', e => {
 board.querySelectorAll('.row').forEach((rowEl, rowIndex) => {
   rowEl.querySelectorAll('.col').forEach((colEl, colIndex) => {
     colEl.addEventListener('click', e => {
-      // boardState[]
+
     })
   })
 })
@@ -113,6 +113,3 @@ function viewTimer() {
     timeArea.textContent = `${hour}:${min}:${sec}`
   }
 }
-
-
-

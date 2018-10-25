@@ -36,35 +36,116 @@ body {
 
 .container {
   width: 500px;
-  background-color: #ff0;
+  height: 500px;
   margin: 0 auto;
 }
+
+.game {
+  background-color: #ff0;
+}
+
 .title {
   text-align: center;
   padding: 10px 0;
 }
 
-
 .game-board {
-  width: 100%;
+  width: 500px;
+  height: 500px;
   border: 1px solid #333;
+  position: relative;
 }
 
-.row {
-  display: flex;
-  justify-content: space-evenly;
-  margin: 10px 0;
+.win {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: #ff0;
+  display: none;
 }
 
 .col {
+  width: 120px;
+  height: 120px;
   border: 1px solid #333;
-  width: 110px;
-  height: 110px;
+  position: absolute;
+
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 1s;
 }
 
-.move, .time{
-  float: left;
+[data-idx='0']{
+  transform: translate(4px, 4px);
 }
-.btn-restart {
-  float: right;
+
+[data-idx='1']{
+  transform: translate(calc(100% + 8px), 4px)
+}
+
+[data-idx='2']{
+  transform: translate(calc(200% + 12px), 4px)
+}
+
+[data-idx='3']{
+  transform: translate(calc(300% + 16px), 4px)
+}
+
+[data-idx='4']{
+  transform: translate(4px, calc(100% + 8px));
+}
+
+[data-idx='5']{
+  transform: translate(calc(100% + 8px), calc(100% + 8px));
+}
+
+[data-idx='6']{
+  transform: translate(calc(200% + 12px), calc(100% + 8px));
+}
+
+[data-idx='7']{
+  transform: translate(calc(300% + 16px), calc(100% + 8px));
+}
+
+[data-idx='8']{
+  transform: translate(4px, calc(200% + 12px));
+}
+
+[data-idx='9'] {
+  transform: translate(calc(100% + 8px), calc(200% + 12px));
+}
+
+[data-idx='10'] {
+  transform: translate(calc(200% + 12px), calc(200% + 12px));
+}
+
+[data-idx='11'] {
+  transform: translate(calc(300% + 16px), calc(200% + 12px));
+}
+
+[data-idx='12'] {
+  transform: translate(4px, calc(300% + 16px));
+}
+
+[data-idx='13'] {
+  transform: translate(calc(100% + 8px), calc(300% + 16px));
+}
+
+[data-idx='14'] {
+  transform: translate(calc(200% + 12px), calc(300% + 16px));
+}
+
+[data-idx='15']{
+  transform: translate(calc(300% + 16px), calc(300% + 16px));
+}
+
+.blank {
+  color: transparent;
+  border-color: transparent;
 }

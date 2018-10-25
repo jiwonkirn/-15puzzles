@@ -60,6 +60,8 @@ body {
   border: 1px solid #333;
   width: 110px;
   height: 110px;
+  font-size: 40px;
+  // transition: all .2s;
 }
 
 .move, .time{
@@ -67,4 +69,8 @@ body {
 }
 .btn-restart {
   float: right;
+}
+
+.blank {
+  background-color: green;
 }

@@ -1,9 +1,12 @@
-const boardState = [
-  [1,2,3,4],
-  [5,6,7,8],
-  [9,10,11,12],
-  [13,14,15,0]
-]
+let boardState = [
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9, 10, 11, 12],
+  [13, 14, 15, 0]
+];
+
+// blank의 좌표
+let x = 0; y = 0;
 
 const board = document.querySelector('.game-board')
 
@@ -54,18 +57,28 @@ function randomBox(arr) {
   }
 }
 
-// 보드의 현 상태를 그리는 함수
-function drawBorad() {
-  board.querySelectorAll('.row').forEach((rowEl, rowIndex) => {
+// 상태로부터 화면을 그리는 함수
+function drawBoard() {
+  document.querySelectorAll('.row').forEach((rowEl, rowIndex) => {
     rowEl.querySelectorAll('.col').forEach((colEl, colIndex) => {
-      if (boardState[rowIndex][colIndex] !== 0) {
-        colEl.textContent = boardState[rowIndex][colIndex]
+      // blank의 좌표 알아내는 법
+      if (boardState[rowIndex][colIndex] === 0) {
+        x = colIndex
+        y = rowIndex
+      }
+      // 퍼즐판에 boardState의 숫자를 넣어줌
+      colEl.textContent = boardState[rowIndex][colIndex];
+      // 만약, colEl이 X라면 'blank'class를 넣어줌
+      if (boardState[rowIndex][colIndex] === 0) {
+        colEl.classList.add("blank");
       } else {
-        colEl.textContent = null;
+        colEl.classList.remove("blank");
       }
     })
   })
-}
+};
+
+drawBoard()
 
 const restart = document.querySelector('.btn-restart')
 
@@ -75,14 +88,31 @@ restart.addEventListener('click', e => {
   drawBorad()
 })
 
-// 클릭했을 때 위치를 바꾸는 함수
-board.querySelectorAll('.row').forEach((rowEl, rowIndex) => {
+// 클릭할 때 일어나는 변화 (방법 1: 배열 이용)
+document.querySelectorAll('.row').forEach((rowEl, rowIndex) => {
   rowEl.querySelectorAll('.col').forEach((colEl, colIndex) => {
     colEl.addEventListener('click', e => {
-
+      if (rowIndex === y) {
+        boardState[rowIndex].splice(x, 1);
+        boardState[rowIndex].splice(colIndex, 0, 0);
+        drawBoard();
+      } else if (colIndex === x && rowIndex < y) {
+        for (let i = 0; i < y - rowIndex; i++) {
+          boardState[y - i].splice(colIndex, 1, boardState[y - 1 - i][colIndex]);
+        }
+        boardState[rowIndex].splice(colIndex, 1, 0);
+        drawBoard();
+      } else if (colIndex === x && rowIndex > y) {
+        for (let i = 0; i < rowIndex - y; i++) {
+          boardState[y + i].splice(colIndex, 1, boardState[y + 1 + i][colIndex]);
+        }
+        boardState[rowIndex].splice(colIndex, 1, 0);
+        drawBoard();
+      }
     })
   })
 })
+
 
 // 타이머 표시부
 function viewTimer() {
@@ -114,3 +144,4 @@ function viewTimer() {
     timeArea.textContent = `${hour}:${min}:${sec}`
   }
 }
+

@@ -27,6 +27,8 @@
   z-index: 10;
 }
 
+$main-color: #fff;
+
 html {
   font-size: 10px;
 }
@@ -36,12 +38,6 @@ body {
   font-size: 14px;
   font-family:'Lato', 'Noto Sans KR', sans-serif;
 }
-
-/* ==========
-  Variable
-=========== */
-
-$main-color: #fff;
 
 /* ====================
   Animation variables

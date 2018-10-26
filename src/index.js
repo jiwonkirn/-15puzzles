@@ -108,6 +108,8 @@ gameTable.forEach((colEl, colIndex) => {
     if (score === 15) {
       document.querySelector('.win').classList.add('view')
       restart.textContent = '재시작'
+      clearInterval(timeUp) // 돌고 있던 타이머 인터벌 종료
+      timeElFinal.textContent = timeEl.textContent  // 하단바의 시간을 모달에 똑같이 띄워준다.
     }
 
   })
@@ -115,7 +117,8 @@ gameTable.forEach((colEl, colIndex) => {
 
 // 타이머 기능
 let timeUp
-const timeEl = document.querySelector('.timeEl-bottom')
+const timeEl = document.querySelector('.timeEl')
+const timeElFinal = document.querySelector('.timeEl-final')
 function setIntervalAndExcute() {
   // 타이머 값 초기화
   timeEl.textContent = `00:00:00`
@@ -150,11 +153,12 @@ function setIntervalAndExcute() {
   return timeUp
 }
 
+
 // 재시작 버튼 동작
 const restart = document.querySelector('.btn-restart')
 
 restart.addEventListener('click', e => {
-  restart.textContent = '재시작'
+  restart.textContent = '다시하기'
   document.querySelector('.win').classList.remove('view') // 승리 모달 제거
   move = 0; // 움직임 횟수 초기화
   clearInterval(timeUp) // 기존에 돌고 있던 타이머 인터벌 종료
@@ -164,7 +168,7 @@ restart.addEventListener('click', e => {
 })
 
 // 최초 타이머 인터벌 실행 및 상태에 따른 화면 그리기 수행
-setIntervalAndExcute()
+// setIntervalAndExcute()
 drawBoard()
 
 

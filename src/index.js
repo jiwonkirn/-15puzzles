@@ -1,20 +1,8 @@
-// let boardState = [
-//   [1, 2, 3, 4],
-//   [5, 6, 7, 8],
-//   [9, 10, 11, 12],
-//   [13, 14, 15, 0]
-// ];
-
-// // blank의 좌표
-// let x = 0; y = 0;
-
-// // move 값
-// let move = 0;
-
-// const board = document.querySelector('.game-board')
-
+// 퍼즐의 숫자를 저장하는 배열 선언
 const boardState = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,15,14]
+  // console.log(boardState)
 
+// 랜덤 박스 배치 및 게임 진행 가능 여부 판단을 위한 반전쌍 판별 함수
 function randomBox(arr) {
   // 랜덤으로 박스 배치
   const numArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
@@ -61,35 +49,28 @@ function randomBox(arr) {
 
 }
 
-
-
 // 보드의 현 상태를 그리는 함수
 const gameBoard = document.querySelector('.game-board')
-
+const moveEl = document.querySelector('.moveEl')
 function drawBoard() {
   gameBoard.querySelectorAll('.col').forEach((colEl, colIndex) => {
       colEl.setAttribute('data-idx', boardState[colIndex])
   })
+  moveEl.textContent = move
 };
 
-// 재시작 버튼 동작
-const restart = document.querySelector('.btn-restart')
-
-restart.addEventListener('click', e => {
-  clearInterval(timeUp) // 기존에 돌고 있던 타이머 인터벌 종료
-  setIntervalAndExcute()  // 타이머 인터벌이 들어있는 함수 재실행
-  randomBox(boardState)
-  drawBoard()
-})
-
-// 클릭했을 때 움직이게 하는 함수
+// 클릭했을 때 움직이도록 상태를 변화시키는 함수
 const gameTable = gameBoard.querySelectorAll('.col')
-
+// 움직임 횟수 체크를 위한 move 변수 선언
+let move = 0;
 gameTable.forEach((colEl, colIndex) => {
   colEl.addEventListener('click', e => {
+
     let dataIdx = parseInt(colEl.getAttribute('data-idx'))
-    console.log(`지금 클릭한 인덱스는 ${dataIdx}입니다.`)
-    console.log(boardState)
+
+    // console.log(`지금 클릭한 인덱스는 ${dataIdx}입니다.`)
+    // console.log(boardState)
+
     for(let i = 0; i < 16; i++) {
       // console.log(`${i+1}는 ${boardState[i]}인덱스에`)
     }
@@ -98,23 +79,43 @@ gameTable.forEach((colEl, colIndex) => {
     let leftItem = boardState.indexOf(dataIdx - 1)
     let topItem = boardState.indexOf(dataIdx - 4)
     let bottomItem = boardState.indexOf(dataIdx + 4)
+
     if (rightItem === 15) {
       boardState.splice(thisItem, 1, dataIdx + 1)
       boardState.splice(rightItem, 1, dataIdx)
+      move += 1
       drawBoard()
     } else if (leftItem === 15) {
       boardState.splice(thisItem, 1, dataIdx - 1)
       boardState.splice(leftItem, 1, dataIdx)
+      move += 1
       drawBoard()
     } else if (topItem === 15) {
       boardState.splice(thisItem, 1, dataIdx - 4)
       boardState.splice(topItem, 1, dataIdx)
+      move += 1
       drawBoard()
     } else if (bottomItem === 15) {
       boardState.splice(thisItem, 1, dataIdx + 4)
       boardState.splice(bottomItem, 1, dataIdx)
+      move += 1
       drawBoard()
     }
+
+    // 승리조건 판별
+    // 승리조건 판별을 위한 score 변수 선언
+    let score = 0;
+    // 해당 index 위치에 index + 1 숫자가 위치하면 score가 1씩 증가한다.
+    for (let i = 0; i < 15; i++) {
+      if(parseInt(gameTable[i].getAttribute('data-idx')) + 1 === parseInt(gameTable[i].textContent)) {
+        score++
+      } else score = 0
+    }
+    // score가 15가 되면 모든 숫자가 1~15의 순서로 위치한다는 의미이므로 게임 승리하고 종료한다.
+    if (score === 15) {
+      document.querySelector('.win').classList.add('view')
+    }
+
   })
 })
 
@@ -155,9 +156,21 @@ function setIntervalAndExcute() {
   return timeUp
 }
 
+// 재시작 버튼 동작
+const restart = document.querySelector('.btn-restart')
+
+restart.addEventListener('click', e => {
+  document.querySelector('.win').classList.remove('view')
+  clearInterval(timeUp) // 기존에 돌고 있던 타이머 인터벌 종료
+  setIntervalAndExcute()  // 타이머 인터벌이 들어있는 함수 재실행
+  randomBox(boardState)
+  drawBoard()
+})
+
 // 최초 인터벌 실행 및 그리기 수행
 setIntervalAndExcute()
 drawBoard()
+
 
 // // 상태로부터 화면을 그리는 함수
 // function drawBoard() {
@@ -213,31 +226,6 @@ drawBoard()
 //   })
 // })
 
-// document.querySelectorAll('.row').forEach((rowEl, rowIndex) => {
-//   rowEl.querySelectorAll('.col').forEach((colEl, colIndex) => {
-//     let blankRow
-//     let blankCol
-//     if(colEl.classList.contains('col-blank')) {
-//       blankRow = rowIndex
-//       blankCol = colIndex
-//     }
-//     colEl.addEventListener('click', e => {
-//       // if(colEl.parentElement.childNodes[blankRow].childNodes[blankCol].classList.contains('col-blank')) {
-//       //   console.log('blank')
-//       // }
-//       // console.log(colEl.parentElement.parentElement.children)
-//       for(let i=0; i < colEl.parentElement.parentElement.children.length; i++) {
-//         if(colEl.parentElement.parentElement.children[i].children[colIndex].classList.contains('col-blank')) {
-//           console.log(colEl.parentElement.parentElement.children[i])
-//         }
-//       }
-//       // console.log(colEl.parentElement.childNodes)
-//     })
-//   })
-// })
-
-
-
 // // 정답 판별 함수
 // function isAnswer() {
 //   let answer = true
@@ -264,6 +252,7 @@ drawBoard()
 
 //   // console.log(newArr)
 // }
+
 // // 재시작 버튼을 눌렀을 때
 // const restart = document.querySelector('.btn-restart')
 // restart.addEventListener('click', e => {

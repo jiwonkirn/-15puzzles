@@ -1,5 +1,5 @@
 const boardState = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,15,14]
-
+console.log(boardState)
 function randomBox(arr) {
   // 랜덤으로 박스 배치
   const numArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
@@ -61,6 +61,7 @@ drawBorad()
 const restart = document.querySelector('.btn-restart')
 
 restart.addEventListener('click', e => {
+  document.querySelector('.win').classList.remove('view')
   randomBox(boardState)
   drawBorad()
 })
@@ -70,17 +71,21 @@ const gameTable = gameBoard.querySelectorAll('.col')
 
 gameTable.forEach((colEl, colIndex) => {
   colEl.addEventListener('click', e => {
+
     let dataIdx = parseInt(colEl.getAttribute('data-idx'))
-    console.log(`지금 클릭한 인덱스는 ${dataIdx}입니다.`)
-    console.log(boardState)
+
+    // console.log(`지금 클릭한 인덱스는 ${dataIdx}입니다.`)
+    // console.log(boardState)
+
     for(let i = 0; i < 16; i++) {
-      console.log(`${i+1}는 ${boardState[i]}인덱스에`)
+      // console.log(`${i+1}는 ${boardState[i]}인덱스에`)
     }
     let thisItem = boardState.indexOf(dataIdx)
     let rightItem = boardState.indexOf(dataIdx + 1)
     let leftItem = boardState.indexOf(dataIdx - 1)
     let topItem = boardState.indexOf(dataIdx - 4)
     let bottomItem = boardState.indexOf(dataIdx + 4)
+
     if (rightItem === 15) {
       boardState.splice(thisItem, 1, dataIdx + 1)
       boardState.splice(rightItem, 1, dataIdx)
@@ -98,8 +103,20 @@ gameTable.forEach((colEl, colIndex) => {
       boardState.splice(bottomItem, 1, dataIdx)
       drawBorad()
     }
+
+    let score = 0;
+
+    for (let i = 0; i < 15; i++) {
+      if(parseInt(gameTable[i].getAttribute('data-idx')) + 1 === parseInt(gameTable[i].textContent)) {
+        score++
+      } else score = 0
+    }
+
+    if (score === 15) {
+      document.querySelector('.win').classList.add('view')
+    }
+
   })
 })
-
 
 

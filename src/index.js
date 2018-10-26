@@ -24,8 +24,6 @@ function randomBox(arr) {
     }
   }
 
-  // console.log(`반전쌍은 ${reversalPair}개 입니다.`)
-
   // 0의 위치 구하기
   let zeroPosition = 0;
 
@@ -34,8 +32,6 @@ function randomBox(arr) {
       zeroPosition += Math.floor(index / 4) + 1
     }
   })
-
-  // console.log(`빈 곳은 ${zeroPosition}줄에 있습니다.`)
 
   // 조건에 부합하지 않을 경우 함수 재실행
   if (zeroPosition % 2 === 1 && reversalPair % 2 === 0) {
@@ -84,8 +80,6 @@ gameTable.forEach((colEl, colIndex) => {
     let bottomItem = boardState.indexOf(dataIdx + 4)
     let dbBottomItem = boardState.indexOf(dataIdx + 8)
     let tpBottomItem = boardState.indexOf(dataIdx + 12)
-
-    console.log(boardState)
 
     if (rightItem === 15
       && dataIdx + 1 !== 0 && dataIdx + 1 !== 4 && dataIdx + 1 !== 8 && dataIdx + 1 !== 12

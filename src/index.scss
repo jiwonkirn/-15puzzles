@@ -35,8 +35,8 @@ body {
 }
 
 .container {
-  width: 420px;
-  height: 420px;
+  width: 380px;
+  // height: 420px;
   margin: 0 auto;
 }
 
@@ -61,8 +61,8 @@ body {
 }
 
 .game-board {
-  width: 420px;
-  height: 420px;
+  width: 100%;
+  height: 380px;
   box-sizing: content-box;
   border: 5px solid #8d9e96;
   position: relative;
@@ -70,8 +70,8 @@ body {
 
 .win {
   position: absolute;
-  width: 430px;
-  height: 430px;
+  width: 390px;
+  height: 390px;
   top: 0;
   left: 0;
   z-index: 10;
@@ -111,8 +111,8 @@ body {
 }
 
 .col {
-  width: 100px;
-  height: 100px;
+  width: calc(25% - 4px);
+  height: calc(25% - 4px);
   border: 7px solid #fff;
   border-radius: 50%;
   position: absolute;
@@ -217,22 +217,28 @@ body {
 
   margin: 15px 0;
   width: 100%;
+
+  box-sizing: content-box;
+  border-left: 5px solid #eee;
+  border-right: 5px solid #eee;
+
+  padding: 4px 0 2px;
   font-size: 16px;
   font-weight: 300;
-  // text-align: center;
+
   display: flex;
   justify-content: space-evenly;
 }
-.info-block {
-  margin-top: 5px
+
+.move {
+  margin-top: 10px
 }
 
 .time {
-  margin-left: 10px;
+  margin-left: 15px;
 }
 
 .btn-restart {
-  // display: inline-block;
   font-size: 14px;
   font-weight: 300;
   width: 100px;
@@ -253,6 +259,15 @@ body {
 .btn-restart:hover {
   background-color: #aaa;
   color: #fff;
+}
+
+.footer {
+  color: #aaa;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  line-height: 30px;
 }
 
 @media screen and (max-width: 480px) {

@@ -87,19 +87,30 @@ gameTable.forEach((colEl, colIndex) => {
 
     console.log(boardState)
 
-    if (rightItem === 15 && dataIdx + 1 !== 0 && dataIdx + 1 !== 4 && dataIdx + 1 !== 8 && dataIdx + 1 !== 12) {
+    if (rightItem === 15
+      && dataIdx + 1 !== 0 && dataIdx + 1 !== 4 && dataIdx + 1 !== 8 && dataIdx + 1 !== 12
+      ) {
       boardState.splice(thisItem, 1, dataIdx + 1)
       boardState.splice(rightItem, 1, dataIdx)
       move += 1
       drawBoard()
-    } else if (dbRightItem === 15 && dataIdx + 2 !== 0 && dataIdx + 2 !== 4 && dataIdx + 2 !== 8 && dataIdx + 2 !== 12) {
+    } else if (
+      dbRightItem === 15
+      && dataIdx + 1 !== 0 && dataIdx + 1 !== 4 && dataIdx + 1 !== 8 && dataIdx + 1 !== 12
+      && dataIdx + 2 !== 0 && dataIdx + 2 !== 4 && dataIdx + 2 !== 8 && dataIdx + 2 !== 12
+      ) {
       boardState.splice(thisItem, 1, dataIdx + 1)
       boardState.splice(rightItem, 1, dataIdx + 2)
       boardState.splice(dbRightItem, 1, dataIdx)
       console.log(boardState)
       move += 2
       drawBoard()
-    } else if (tpRightItem === 15 && dataIdx + 3 !== 0 && dataIdx + 3 !== 4 && dataIdx + 3 !== 8 && dataIdx + 3 !== 12) {
+    } else if (
+      tpRightItem === 15
+      && dataIdx + 1 !== 0 && dataIdx + 1 !== 4 && dataIdx + 1 !== 8 && dataIdx + 1 !== 12
+      && dataIdx + 2 !== 0 && dataIdx + 2 !== 4 && dataIdx + 2 !== 8 && dataIdx + 2 !== 12
+      && dataIdx + 3 !== 0 && dataIdx + 3 !== 4 && dataIdx + 3 !== 8 && dataIdx + 3 !== 12
+      ) {
       boardState.splice(thisItem, 1, dataIdx + 1)
       boardState.splice(rightItem, 1, dataIdx + 2)
       boardState.splice(dbRightItem, 1, dataIdx + 3)
@@ -107,18 +118,29 @@ gameTable.forEach((colEl, colIndex) => {
       console.log(boardState)
       move += 3
       drawBoard()
-    } else if (leftItem === 15 && dataIdx - 1 !== 3 && dataIdx - 1 !== 7 && dataIdx - 1 !== 11 && dataIdx - 1 !== 15) {
+    } else if (
+      leftItem === 15
+      && dataIdx - 1 !== 3 && dataIdx - 1 !== 7 && dataIdx - 1 !== 11 && dataIdx - 1 !== 15
+      ) {
       boardState.splice(thisItem, 1, dataIdx - 1)
       boardState.splice(leftItem, 1, dataIdx)
       move += 1
       drawBoard()
-    } else if (dbLeftItem === 15 && dataIdx - 2 !== 3 && dataIdx - 2 !== 7 && dataIdx - 2 !== 11 && dataIdx - 2 !== 15) {
+    } else if (
+      dbLeftItem === 15
+      && dataIdx - 1 !== 3 && dataIdx - 1 !== 7 && dataIdx - 1 !== 11 && dataIdx - 1 !== 15
+      && dataIdx - 2 !== 3 && dataIdx - 2 !== 7 && dataIdx - 2 !== 11 && dataIdx - 2 !== 15
+      ) {
       boardState.splice(thisItem, 1, dataIdx - 1)
       boardState.splice(leftItem, 1, dataIdx - 2)
       boardState.splice(dbLeftItem, 1, dataIdx)
       move += 2
       drawBoard()
-    } else if (tpLeftItem === 15 && dataIdx - 3 !== 3 && dataIdx - 3 !== 7 && dataIdx - 3 !== 11 && dataIdx - 3 !== 15) {
+    } else if (tpLeftItem === 15
+      && dataIdx - 1 !== 3 && dataIdx - 1 !== 7 && dataIdx - 1 !== 11 && dataIdx - 1 !== 15
+      && dataIdx - 2 !== 3 && dataIdx - 2 !== 7 && dataIdx - 2 !== 11 && dataIdx - 2 !== 15
+      && dataIdx - 3 !== 3 && dataIdx - 3 !== 7 && dataIdx - 3 !== 11 && dataIdx - 3 !== 15
+      ) {
       boardState.splice(thisItem, 1, dataIdx - 1)
       boardState.splice(leftItem, 1, dataIdx - 2)
       boardState.splice(dbLeftItem, 1, dataIdx - 3)

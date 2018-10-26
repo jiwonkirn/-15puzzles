@@ -25,7 +25,7 @@ function randomBox(arr) {
     }
   }
 
-  console.log(`반전쌍은 ${reversalPair}개 입니다.`)
+  // console.log(`반전쌍은 ${reversalPair}개 입니다.`)
 
   // 0의 위치 구하기
   let zeroPosition = 0;
@@ -36,7 +36,7 @@ function randomBox(arr) {
     }
   })
 
-  console.log(`빈 곳은 ${zeroPosition}줄에 있습니다.`)
+  // console.log(`빈 곳은 ${zeroPosition}줄에 있습니다.`)
 
   // 조건에 부합하지 않을 경우 함수 재실행
   if (zeroPosition % 2 === 1 && reversalPair % 2 === 0) {
@@ -160,14 +160,15 @@ function setIntervalAndExcute() {
 const restart = document.querySelector('.btn-restart')
 
 restart.addEventListener('click', e => {
-  document.querySelector('.win').classList.remove('view')
+  document.querySelector('.win').classList.remove('view') // 승리 모달 제거
+  move = 0; // 움직임 횟수 초기화
   clearInterval(timeUp) // 기존에 돌고 있던 타이머 인터벌 종료
   setIntervalAndExcute()  // 타이머 인터벌이 들어있는 함수 재실행
   randomBox(boardState)
   drawBoard()
 })
 
-// 최초 인터벌 실행 및 그리기 수행
+// 최초 타이머 인터벌 실행 및 상태에 따른 화면 그리기 수행
 setIntervalAndExcute()
 drawBoard()
 

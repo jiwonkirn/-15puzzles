@@ -66,20 +66,20 @@ function randomBox(arr) {
 // 보드의 현 상태를 그리는 함수
 const gameBoard = document.querySelector('.game-board')
 
-function drawBorad() {
+function drawBoard() {
   gameBoard.querySelectorAll('.col').forEach((colEl, colIndex) => {
       colEl.setAttribute('data-idx', boardState[colIndex])
   })
 };
 
-drawBorad()
-
 // 재시작 버튼 동작
 const restart = document.querySelector('.btn-restart')
 
 restart.addEventListener('click', e => {
+  clearInterval(timeUp) // 기존에 돌고 있던 타이머 인터벌 종료
+  setIntervalAndExcute()  // 타이머 인터벌이 들어있는 함수 재실행
   randomBox(boardState)
-  drawBorad()
+  drawBoard()
 })
 
 // 클릭했을 때 움직이게 하는 함수
@@ -91,7 +91,7 @@ gameTable.forEach((colEl, colIndex) => {
     console.log(`지금 클릭한 인덱스는 ${dataIdx}입니다.`)
     console.log(boardState)
     for(let i = 0; i < 16; i++) {
-      console.log(`${i+1}는 ${boardState[i]}인덱스에`)
+      // console.log(`${i+1}는 ${boardState[i]}인덱스에`)
     }
     let thisItem = boardState.indexOf(dataIdx)
     let rightItem = boardState.indexOf(dataIdx + 1)
@@ -101,23 +101,63 @@ gameTable.forEach((colEl, colIndex) => {
     if (rightItem === 15) {
       boardState.splice(thisItem, 1, dataIdx + 1)
       boardState.splice(rightItem, 1, dataIdx)
-      drawBorad()
+      drawBoard()
     } else if (leftItem === 15) {
       boardState.splice(thisItem, 1, dataIdx - 1)
       boardState.splice(leftItem, 1, dataIdx)
-      drawBorad()
+      drawBoard()
     } else if (topItem === 15) {
       boardState.splice(thisItem, 1, dataIdx - 4)
       boardState.splice(topItem, 1, dataIdx)
-      drawBorad()
+      drawBoard()
     } else if (bottomItem === 15) {
       boardState.splice(thisItem, 1, dataIdx + 4)
       boardState.splice(bottomItem, 1, dataIdx)
-      drawBorad()
+      drawBoard()
     }
   })
 })
 
+// 타이머 기능
+let timeUp
+const timeEl = document.querySelector('.timeEl')
+function setIntervalAndExcute() {
+  // 타이머 값 초기화
+  timeEl.textContent = `00:00:00`
+  let sec = 0, min = 0, hour = 0
+  // 1000밀리초마다 timer함수를 실행하는 timeUp 함수를 설정
+  timeUp = setInterval(timer, 1000)
+
+  // 타이머 값의 상태를 변화시키는 함수 정의
+  function timer() {
+    sec = parseInt(sec)
+    min = parseInt(min)
+    hour = parseInt(hour)
+    sec += 1
+    if(sec < 10) {
+      sec = '0' + sec
+    } else if(sec === 60) {
+      min += 1
+      sec = '0' + 0
+    }
+    if(min < 10) {
+      min = '0' + min
+    } else if(min === 60) {
+      hour += 1
+      min = '0' + 0
+    }
+    if(hour === 0 || hour < 10) {
+      hour = '0' + hour
+    }
+    // 타이머 값의 상태를 화면에 그려준다.
+    timeEl.textContent = `${hour}:${min}:${sec}`
+  }
+  return timeUp
+}
+
+// 최초 인터벌 실행 및 그리기 수행
+setIntervalAndExcute()
+drawBoard()
 
 // // 상태로부터 화면을 그리는 함수
 // function drawBoard() {
@@ -196,42 +236,7 @@ gameTable.forEach((colEl, colIndex) => {
 //   })
 // })
 
-// // 타이머 기능
-// let timeUp
-// const timeEl = document.querySelector('.timeEl')
-// function setIntervalAndExcute() {
-//   // 타이머 값 초기화
-//   timeEl.textContent = `00:00:00`
-//   let sec = 0, min = 0, hour = 0
-//   // 1000밀리초마다 timer함수를 실행하는 timeUp 함수를 설정
-//   timeUp = setInterval(timer, 1000)
 
-//   // 타이머 값의 상태를 변화시키는 함수 정의
-//   function timer() {
-//     sec = parseInt(sec)
-//     min = parseInt(min)
-//     hour = parseInt(hour)
-//     sec += 1
-//     if(sec < 10) {
-//       sec = '0' + sec
-//     } else if(sec === 60) {
-//       min += 1
-//       sec = '0' + 0
-//     }
-//     if(min < 10) {
-//       min = '0' + min
-//     } else if(min === 60) {
-//       hour += 1
-//       min = '0' + 0
-//     }
-//     if(hour === 0 || hour < 10) {
-//       hour = '0' + hour
-//     }
-//     // 타이머 값의 상태를 화면에 그려준다.
-//     timeEl.textContent = `${hour}:${min}:${sec}`
-//   }
-//   return timeUp
-// }
 
 // // 정답 판별 함수
 // function isAnswer() {
@@ -270,5 +275,4 @@ gameTable.forEach((colEl, colIndex) => {
 // })
 
 
-// setIntervalAndExcute()
-// drawBoard()
+

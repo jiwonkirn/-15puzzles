@@ -52,7 +52,7 @@ body {
 
 .container {
   width: 380px;
-  // height: 420px;
+  background-color: #fff;
   margin: 0 auto;
 
   animation: down 1s forwards;
@@ -69,6 +69,7 @@ body {
 
 .game {
   position: relative;
+  z-index: 10;
 }
 
 .game-explain {
@@ -83,7 +84,8 @@ body {
   height: 380px;
   box-sizing: content-box;
   border: 5px solid #8d9e96;
-  background-color: $main-color;
+  background-color: #fff;
+
   position: relative;
   z-index: 10;
 }
@@ -314,7 +316,7 @@ body {
 .footer {
   color: #aaa;
   position: fixed;
-  z-index: 0;
+  z-index: -1;
   bottom: 0;
   text-align: center;
   width: 100%;

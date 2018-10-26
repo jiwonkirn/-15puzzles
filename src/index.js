@@ -1,6 +1,5 @@
 // 퍼즐의 숫자를 저장하는 배열 선언
 const boardState = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,15,14]
-  // console.log(boardState)
 
 // 랜덤 박스 배치 및 게임 진행 가능 여부 판단을 위한 반전쌍 판별 함수
 function randomBox(arr) {
@@ -68,12 +67,6 @@ gameTable.forEach((colEl, colIndex) => {
 
     let dataIdx = parseInt(colEl.getAttribute('data-idx'))
 
-    // console.log(`지금 클릭한 인덱스는 ${dataIdx}입니다.`)
-    // console.log(boardState)
-
-    for(let i = 0; i < 16; i++) {
-      // console.log(`${i+1}는 ${boardState[i]}인덱스에`)
-    }
     let thisItem = boardState.indexOf(dataIdx)
     let rightItem = boardState.indexOf(dataIdx + 1)
     let leftItem = boardState.indexOf(dataIdx - 1)

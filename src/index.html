@@ -10,51 +10,57 @@
 </head>
 
 <body>
-  <div class="container">
-    <header class="header">
-      <h1 class="title">
-        <img src="imgs/logo.png" alt="15PUZZLES">
-      </h1>
-      <p class="game-explain">공의 숫자를 순서대로 맞추세요!</p>
-    </header>
-    <section class="game">
-      <h2 class="game-heading readable-hidden">
-        여기는 게임 보드
-      </h2>
-      <div class="game-board">
-        <div class="col" data-idx="0">1</div>
-        <div class="col" data-idx="1">2</div>
-        <div class="col" data-idx="2">3</div>
-        <div class="col" data-idx="3">4</div>
-        <div class="col" data-idx="4">5</div>
-        <div class="col" data-idx="5">6</div>
-        <div class="col" data-idx="6">7</div>
-        <div class="col" data-idx="7">8</div>
-        <div class="col" data-idx="8">9</div>
-        <div class="col" data-idx="9">10</div>
-        <div class="col" data-idx="10">11</div>
-        <div class="col" data-idx="11">12</div>
-        <div class="col" data-idx="12">13</div>
-        <div class="col" data-idx="13">14</div>
-        <div class="col" data-idx="15">15</div>
-        <div class="col blank" data-idx="14">0</div>
-      </div>
-      <div class='win'>
-        <p class="win-modal">
-          <span class="smile"> :) </span>
-          승리했습니다!
-          <span class="final-time">Time:<span class="timeEl-final"></span></span>
-        </p>
-      </div>
-      <div class="info">
-        <div class="info-block">
-          <span class="move">move: <span class="moveEl">0</span></span>
-          <span class="time">Time: <span class="timeEl">00:00:00</span></span>
-        </div>
+  <div class="body-container">
+    <div class="container">
+      <header class="header">
+        <h1 class="title">
+          <img src="imgs/logo.png" alt="15PUZZLES">
+        </h1>
+        <p class="game-explain">공의 숫자를 순서대로 맞추세요!</p>
+      </header>
+      <section class="game">
+        <h2 class="game-heading readable-hidden">
+          여기는 게임 보드
+        </h2>
         <button class="btn-restart">시작</button>
-      </div>
-    </section>
+        <div class="game-board">
+          <div class="col" data-idx="0">1</div>
+          <div class="col" data-idx="1">2</div>
+          <div class="col" data-idx="2">3</div>
+          <div class="col" data-idx="3">4</div>
+          <div class="col" data-idx="4">5</div>
+          <div class="col" data-idx="5">6</div>
+          <div class="col" data-idx="6">7</div>
+          <div class="col" data-idx="7">8</div>
+          <div class="col" data-idx="8">9</div>
+          <div class="col" data-idx="9">10</div>
+          <div class="col" data-idx="10">11</div>
+          <div class="col" data-idx="11">12</div>
+          <div class="col" data-idx="12">13</div>
+          <div class="col" data-idx="13">14</div>
+          <div class="col" data-idx="15">15</div>
+          <div class="col blank" data-idx="14">0</div>
+        </div>
+        <div class='win'>
+          <p class="win-modal">
+            <span class="smile"> :) </span>
+            <span class="victory-ment">승리했습니다!</span>
+            <span class="final-time">Time:<span class="timeEl-top"></span></span>
+          </p>
+        </div>
+        <div class="info">
+          <div class="info-block">
+            <span class="move">move: <span class="moveEl">0</span></span>
+            <span class="time">Time: <span class="timeEl-bottom"></span></span>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer class="footer">
+      <small>The work was helped by the FASTCAMPUS.</small>
+    </footer>
   </div>
+
   <script src="./index.js"></script>
 </body>
 

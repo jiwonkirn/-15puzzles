@@ -1,7 +1,7 @@
 @charset "utf-8";
-// @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,400');
-
-* ,
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,400');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400');
+*,
 *::before,
 *::after {
   margin: 0;
@@ -28,6 +28,18 @@
 
 $main-color: #fff;
 
+@keyframes down {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 html {
   font-size: 10px;
 }
@@ -35,13 +47,15 @@ html {
 body {
   background-color: $main-color;
   font-size: 14px;
-  // font-family: 'Noto Sans KR', sans-serif;
+  font-family:'Lato', 'Noto Sans KR', sans-serif;
 }
 
 .container {
   width: 380px;
   // height: 420px;
   margin: 0 auto;
+
+  animation: down 1s forwards;
 }
 
 .header {
@@ -59,7 +73,7 @@ body {
 
 .game-explain {
   color: #999;
-  font-weight: 300;
+  font-weight: 100;
   font-size: 16px;
   padding-top: 20px;
 }
@@ -69,7 +83,9 @@ body {
   height: 380px;
   box-sizing: content-box;
   border: 5px solid #8d9e96;
+  background-color: $main-color;
   position: relative;
+  z-index: 10;
 }
 
 .win {
@@ -93,7 +109,7 @@ body {
   }
 
   100% {
-    opacity: 0.7;
+    opacity: 0.9;
   }
 }
 
@@ -112,6 +128,29 @@ body {
   font-size: 100px;
   display: block;
   text-align: center;
+
+  color: #333;
+}
+
+.victory-ment {
+  display: block;
+  text-align: center;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.final-time {
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+  line-height: 25px;
+
+  border: 1px solid #aaa;
+  opacity: 1;
+
+  display: block;
+  width: 150px;
+  margin: 10px auto 0;
 }
 
 .col {
@@ -120,6 +159,7 @@ body {
   border: 7px solid #fff;
   border-radius: 50%;
   position: absolute;
+  z-index: 10;
 
   font-size: 30px;
   font-weight: bold;
@@ -128,7 +168,7 @@ body {
   justify-content: center;
   align-items: center;
 
-  transition: all 1s;
+  transition: all 0.5s ease-in-out;
 }
 
 .col:nth-child(-n+4) {
@@ -226,12 +266,16 @@ body {
   border-left: 5px solid #eee;
   border-right: 5px solid #eee;
 
-  padding: 4px 0 2px;
+  padding: 4px 0;
   font-size: 16px;
   font-weight: 300;
+  color: #555;
 
   display: flex;
   justify-content: space-evenly;
+
+  position: absolute;
+  z-index: 100;
 }
 
 .move {
@@ -245,8 +289,8 @@ body {
 .btn-restart {
   font-size: 14px;
   font-weight: 300;
-  width: 100px;
-  line-height: 25px;
+  width: 80px;
+  line-height: 30px;
   border: 1px solid #aaa;
   color: #aaa;
   background-color: #fff;
@@ -257,21 +301,29 @@ body {
   left: 50%;
   transform: translateX(-50%);
 
-  transition: all 0.5s ease-in-out;
+  outline: 0;
+  transition: all 0.3s ease-in-out;
 }
 
 .btn-restart:hover {
   background-color: #aaa;
   color: #fff;
+  outline: 0;
 }
 
 .footer {
   color: #aaa;
-  position: absolute;
+  position: fixed;
+  z-index: 0;
   bottom: 0;
   text-align: center;
   width: 100%;
-  line-height: 30px;
+  line-height: 40px;
+  font-weight: 300;
+}
+
+.fastcampus {
+  font-family: 400;
 }
 
 @media screen and (max-width: 480px) {
@@ -297,6 +349,7 @@ body {
     width : calc(25% - 4px);
     height: calc(25% - 4px);
     border: 5px solid #fff;
+    margin-top: -1px;
   }
 
   .blank {

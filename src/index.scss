@@ -113,7 +113,7 @@ body {
 .col {
   width: 100px;
   height: 100px;
-  border: 10px solid #fff;
+  border: 7px solid #fff;
   border-radius: 50%;
   position: absolute;
 
@@ -239,6 +239,7 @@ body {
   line-height: 25px;
   border: 1px solid #aaa;
   color: #aaa;
+  background-color: #fff;
   border-radius: 20px;
 
   position: absolute;
@@ -254,3 +255,32 @@ body {
   color: #fff;
 }
 
+@media screen and (max-width: 480px) {
+  $viewWidth: calc(100vw - 20px);
+
+  .title img {
+    width: 80vw;
+  }
+
+  .container, .game, .game-board, .win {
+    max-width: 480px;
+    width: calc(100vw - 20px);
+    height: $viewWidth;
+    max-height: 480px;
+  }
+
+  .game-board {
+    box-sizing: border-box;
+    border-width: 5px;
+  }
+
+  .col {
+    width : calc(25% - 4px);
+    height: calc(25% - 4px);
+    border: 5px solid #fff;
+  }
+
+  .blank {
+    border-color: transparent;
+  }
+}

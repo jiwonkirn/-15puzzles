@@ -1,5 +1,5 @@
 // 퍼즐의 숫자를 저장하는 배열 선언
-const boardState = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,15,14]
+const boardState = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 
 // 랜덤 박스 배치 및 게임 진행 가능 여부 판단을 위한 반전쌍 판별 함수
 function randomBox(arr) {
@@ -16,13 +16,15 @@ function randomBox(arr) {
 
   for (let i = 0; i < 16; i+=4) {
     for (let j = i; j < i + 4; j++) {
-      for (let k = j + 1; k < j + 4; k++) {
+      for (let k = j + 1; k < i + 4; k++) {
         if (arr[j] > arr[k]) {
           reversalPair++
         }
       }
     }
   }
+
+  console.log(`현재의 반전쌍은 ${reversalPair}개 입니다.`)
 
   // 0의 위치 구하기
   let zeroPosition = 0;
@@ -32,6 +34,8 @@ function randomBox(arr) {
       zeroPosition += Math.floor(index / 4) + 1
     }
   })
+
+  console.log(`현재 반전쌍은 ${zeroPosition}개 입니다.`)
 
   // 조건에 부합하지 않을 경우 함수 재실행
   if (zeroPosition % 2 === 1 && reversalPair % 2 === 0) {

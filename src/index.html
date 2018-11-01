@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>15 PUZZLES</title>
   <link rel="stylesheet" href="./index.scss">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 </head>
 
 <body>
@@ -18,18 +19,18 @@
     <div class="container">
 
       <!-- Header -->
-      <header class="header">
+      <header class="header clearfix">
 
         <!-- Logo -->
         <h1 class="title">
           <img src="imgs/logo.png" alt="15PUZZLES">
         </h1>
 
-        <!-- Game explain -->
+        <div class="group"><!-- Game explain -->
         <p class="game-explain">공의 숫자를 순서대로 맞추세요!</p>
 
         <!-- Start & Restart button -->
-        <button class="btn-restart">시작</button>
+        <button class="btn-restart">시작</button></div>
 
       </header>
 
@@ -56,24 +57,24 @@
           <div class="col" data-idx="11">12</div>
           <div class="col" data-idx="12">13</div>
           <div class="col" data-idx="13">14</div>
-          <div class="col" data-idx="15">15</div>
-          <div class="col blank" data-idx="14">0</div>
+          <div class="col" data-idx="14">15</div>
+          <div class="col blank" data-idx="15">none</div>
         </div>
 
         <!-- Win modal -->
         <div class='win'>
           <p class="win-modal">
-            <span class="smile"> :) </span>
-            <span class="victory-ment">승리했습니다!</span>
-            <span class="final-time">Time:<span class="timeEl-top"></span></span>
+            <span class="smile"><i class="far fa-grin"></i></span>
+            <span class="victory-ment">축하합니다!</span>
+            <span class="final-time">Record: <span class="recordEl"></span></span>
           </p>
         </div>
 
         <!-- Game informations -->
         <div class="info">
           <div class="info-block">
-            <span class="move">move: <span class="moveEl">0</span></span>
-            <span class="time">Time: <span class="timeEl-bottom"></span></span>
+            <span class="move">Move: <span class="moveEl">0</span></span>
+            <span class="time">Time: <span class="timeEl">00:00:00</span></span>
           </div>
         </div>
 

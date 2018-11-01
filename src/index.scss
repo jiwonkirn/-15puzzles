@@ -39,6 +39,13 @@ body {
   font-family:'Lato', 'Noto Sans KR', sans-serif;
 }
 
+.clearfix::after {
+  content: '';
+  clear: both;
+  display: block
+}
+
+
 /* ====================
   Animation variables
 ====================== */
@@ -111,14 +118,14 @@ body {
 // Restrt button =============================
 
 .btn-restart {
-  font-size: 14px;
-  font-weight: 300;
-  width: 80px;
-  line-height: 30px;
+  font-size: 17px;
+  font-weight: 400;
+  width: 100px;
+  line-height: 40px;
   border: 1px solid #aaa;
   color: #aaa;
   background-color: #fff;
-  border-radius: 20px;
+  border-radius: 60px;
   margin-top: 15px;
 
   outline: 0;
@@ -177,6 +184,7 @@ body {
 }
 
 .smile {
+  font-family: "fontello";
   font-size: 100px;
   display: block;
   text-align: center;
@@ -340,7 +348,10 @@ body {
 }
 
 .move {
-  margin-top: 10px
+  margin-top: 10px;
+}
+.moveEl, .timeEl, .recordEl {
+  font-weight: 400;
 }
 
 .time {
@@ -378,6 +389,27 @@ body {
     width: 80vw;
   }
 
+  .header {
+    padding-bottom: 15px;
+  }
+
+  .group {
+    display: flex;
+    justify-content: center;
+  }
+
+  .game-explain {
+    margin-top: 2px;
+    display: inline-block;
+  }
+
+  .btn-restart {
+    font-size: 14px;
+    width: 60px;
+    line-height: 40px;
+    margin-left: 10px;
+  }
+
   .container, .game, .game-board, .win {
     max-width: 480px;
     width: calc(100vw - 20px);
@@ -399,5 +431,13 @@ body {
 
   .blank {
     border-color: transparent;
+  }
+
+  .info {
+    border: 0;
+  }
+
+  .footer {
+    display: none;
   }
 }
